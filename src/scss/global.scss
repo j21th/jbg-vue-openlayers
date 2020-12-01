@@ -1,0 +1,21 @@
+html {
+  overflow: hidden auto !important;
+}
+body {
+  margin: 0;
+  padding: 0;
+}
+h1 {
+  padding: 0px 10px;
+  color: $jbg-color-green-1;
+  font-size: 1.5rem;
+}
+.jbg-hotel-on {
+  color: #00ff00;
+  font-size: 20px;
+  text-shadow: 1px 1px black;
+}
+.jbg-hotel-off {
+  color: gray;
+  font-size: 20px;
+}

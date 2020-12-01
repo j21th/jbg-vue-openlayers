@@ -1,0 +1,52 @@
+[
+  {
+    "ID":"1",
+    "Name":"Ritz",
+    "Active": true,
+    "Coordinates":[-3.692519,40.415665],
+    "Date":"2020-01-18T22:10:00+02:00",
+    "Price":1000.00,
+    "Occupation":0.87,
+    "Img":""
+  },
+  {
+    "ID":"2",
+    "Name":"Savoy",
+    "Active": true,
+    "Coordinates":[-0.120491,51.509369],
+    "Date":"2020-01-18T22:10:00+02:00",
+    "Price":750.15,
+    "Occupation":0.20,
+    "Img":""
+  },
+  {
+    "ID":"3",
+    "Name":"Plaza",
+    "Active": false,
+    "Coordinates":[-73.9746,40.7647],
+    "Date":"2020-01-18T22:10:00+02:00",
+    "Price":850.33,
+    "Occupation":0.50,
+    "Img":"" 
+  },
+  {
+    "ID":"4",
+    "Name":"Ritz",
+    "Active": true,
+    "Coordinates":[2.32861,48.86778],
+    "Date":"2020-01-18T22:10:00+02:00",
+    "Price":970.75,
+    "Occupation":0.30, 
+    "Img":""
+  },
+  {
+    "ID":"5",
+    "Name":"Excelsior",
+    "Active": true,
+    "Coordinates":[12.4900178909302,41.9078598022461],
+    "Date":"2020-01-18T22:10:00+02:00",
+    "Price":874.99,
+    "Occupation":0.99,
+    "Img": "" 
+  }
+]    
