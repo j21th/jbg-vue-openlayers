@@ -8,8 +8,13 @@
           <v-icon @click="closePopup()">mdi-close</v-icon>
         </v-system-bar>
         <v-card-text>
-          <v-avatar size="24" :color="selectedHotel.Color">
-          </v-avatar>
+          <div class="jbg-pin-header">
+            <v-avatar size="24" :color="selectedHotel.Color">
+            </v-avatar>
+            <div>
+              <v-icon class="jbg-star" v-for="star in selectedHotel.Stars" :key="star">mdi-star</v-icon>
+            </div>
+          </div>
           <v-img
             v-if="selectedHotel.Img"
             :src="selectedHotel.Img"
@@ -42,7 +47,6 @@
                   :value="selectedHotel.Occupation"
                   color="green"
                   height="20"
-                  striped
                   rounded
                 >
                   <template v-slot="{ value }">
@@ -104,9 +108,13 @@ const eColours = {
   greenTrans: "rgba(3, 175, 0, 0.5)",
   orange: "rgba(255, 177, 0, 1)",
   orangeTrans: "rgba(255, 177, 0, 0.5)",
-  inactive: "rgba(150, 150, 150, 1)",
+  inactive: "rgba(10, 10, 10, 1)",
   inactiveTrans: "rgba(200, 200, 200, 0.7)"
-  
+}
+
+const eOccupation = {
+  low: 0.33,
+  hight: 0.66
 }
 
 export default {
@@ -138,7 +146,7 @@ export default {
         image: new Circle({
           fill: new Fill({ color: eColours.inactiveTrans }),
           stroke: new Stroke({ color: eColours.inactive, width: 1.5 }),
-          radius: 4
+          radius: 5
         }),
         fill: new Fill({ color: eColours.inactiveTrans }),
         stroke: new Stroke({ color: eColours.inactive, width: 1.5 })
@@ -196,13 +204,20 @@ export default {
     }
   },
   methods: {
+    getStars(stars) {
+      const starsArray = []
+      for (let i = 1; i <= stars; i++) {
+        starsArray.push(i)
+      }
+      return starsArray
+    },
     getColor(Active, Occupation) {
       if (!Active) {
         return eColours.inactive
       } else {
-        if (Occupation > 0.50) {
+        if (Occupation > eOccupation.hight) {
           return eColours.green
-        } else if (Occupation > 0.25) {
+        } else if (Occupation > eOccupation.low) {
           return eColours.orange
         } else {
           return eColours.red
@@ -244,7 +259,7 @@ export default {
           })
           if (features.length > 0) {
             const feature = features[0]
-            const { Name, Price, Active, Occupation, Date, Coordinates, Img } = feature.getProperties()  
+            const { Name, Price, Active, Occupation, Date, Coordinates, Img, Stars } = feature.getProperties()  
             that.selectedHotel = { 
               Name, 
               Price: ((Price || 0)).toFixed(2), 
@@ -253,7 +268,8 @@ export default {
               Date,
               Color: that.getColor(Active, Occupation),
               Coordinates,
-              Img
+              Img,
+              Stars: that.getStars(Stars)
             } 
             const coordinate = event.coordinate
             that.showPopup = true
@@ -286,7 +302,7 @@ export default {
 
     },
     addMarker(hotel) {
-      const { Coordinates, Name, Price, Date, Occupation, Active, Img } = hotel
+      const { Coordinates, Name, Price, Date, Occupation, Active, Img, Stars } = hotel
       const marker = new VectorLayer({
       source: new VectorSource({
           features: [
@@ -298,16 +314,17 @@ export default {
                   Date,
                   Active,
                   Coordinates,
-                  Img
+                  Img,
+                  Stars
               })
           ]})})
 
       if (!Active) {
         marker.setStyle(this.iconMarkers.inactive)
       } else {
-        if (Occupation > 0.50) {
+        if (Occupation > eOccupation.hight) {
           marker.setStyle(this.iconMarkers.green)
-        } else if (Occupation > 0.25) {
+        } else if (Occupation > eOccupation.low) {
           marker.setStyle(this.iconMarkers.orange)
         } else {
           marker.setStyle(this.iconMarkers.red)
@@ -333,6 +350,14 @@ export default {
     width: 100%;
     cursor: pointer;
   }
+  .jbg-pin-header {
+    display: flex;
+    justify-content: space-between;
+    .jbg-star {
+      font-size: 1rem !important;
+      @include jbg-color-gold;
+    }
+  }
   .jbg-big {
     #map {
       width: calc(100% - #{$jbg-drawer-w});
@@ -350,7 +375,7 @@ export default {
     text-transform: uppercase;
   }
   .ol-zoom-in, .ol-zoom-out {
-    background: $jbg-color-green-1 !important;
+    background: $jbg-color-purple-dark !important;
   }
   #map-popup-content {
     width: 200px;

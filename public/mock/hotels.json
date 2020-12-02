@@ -1,12 +1,13 @@
 [
   {
     "ID":"1",
-    "Name":"Ritz",
+    "Name":"Ritz Madrid",
     "Active": true,
     "Coordinates":[-3.692519,40.415665],
     "Date":"2020-01-18T22:10:00+02:00",
     "Price":1000.00,
     "Occupation":0.87,
+    "Stars":5,
     "Img":""
   },
   {
@@ -16,7 +17,8 @@
     "Coordinates":[-0.120491,51.509369],
     "Date":"2020-01-18T22:10:00+02:00",
     "Price":750.15,
-    "Occupation":0.20,
+    "Occupation":0.48,
+    "Stars":5,
     "Img":""
   },
   {
@@ -27,16 +29,18 @@
     "Date":"2020-01-18T22:10:00+02:00",
     "Price":850.33,
     "Occupation":0.50,
+    "Stars":5,
     "Img":"" 
   },
   {
     "ID":"4",
-    "Name":"Ritz",
+    "Name":"Ritz Paris",
     "Active": true,
     "Coordinates":[2.32861,48.86778],
     "Date":"2020-01-18T22:10:00+02:00",
     "Price":970.75,
     "Occupation":0.30, 
+    "Stars":5,
     "Img":""
   },
   {
@@ -47,6 +51,7 @@
     "Date":"2020-01-18T22:10:00+02:00",
     "Price":874.99,
     "Occupation":0.99,
+    "Stars":5,
     "Img": "" 
   }
 ]    

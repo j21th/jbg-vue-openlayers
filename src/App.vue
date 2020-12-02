@@ -122,11 +122,11 @@ export default {
   }
   aside {
     .v-navigation-drawer__content {
-      background: $jbg-main-bg;
+      @include jbg-main-bg;
     }
   }
   header .v-toolbar__content {
-      background: $jbg-main-bg;
+    @include jbg-main-bg;
     .v-app-bar__nav-icon i {
       color: white !important;
     }

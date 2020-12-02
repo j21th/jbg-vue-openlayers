@@ -1,0 +1,9 @@
+
+@mixin jbg-main-bg {
+  background-image: linear-gradient(90deg, #44094e00, #000000);
+  background-color: $jbg-color-purple-dark;
+}
+@mixin jbg-color-gold {
+  color: #ffdc90 !important;
+  text-shadow: 1px 1px orange !important;
+}
